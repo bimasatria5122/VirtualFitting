@@ -7,7 +7,9 @@ import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.listener.multi.BaseMultiplePermissionsListener
 import com.revton.virtualfitting.core.Animation
+import com.revton.virtualfitting.core.Config
 import kotlinx.android.synthetic.main.activity_allow_storage.*
+import java.io.File
 
 class AllowStorage : AppCompatActivity()
 {
@@ -20,6 +22,7 @@ class AllowStorage : AppCompatActivity()
         button_storage.setOnClickListener{
             Animation().button_clicked(findViewById(R.id.button_storage))
             allowAccessStorage()
+            if(!File(Config().getConfigPath()).exists()) Config().createConfigFile()
         }
 
     }

@@ -1,6 +1,7 @@
 package com.revton.virtualfitting.core
 
 import android.graphics.Bitmap
+import android.os.Environment
 import android.util.Log
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -36,8 +37,7 @@ object Converters {
 
         try
         {
-            var storage_location = Config()
-            val path = storage_location.save_location
+            val path = File(Config().getDirectoryPath())
             if (!path.exists())
                 path.mkdirs()
             val picture = File(path, "VF-" + System.currentTimeMillis() + ".jpeg")

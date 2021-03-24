@@ -23,12 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
- Indicates that app requires ARCore ("AR Required"). Causes the Google
-             Play Store to download and install Google Play Services for AR along
-             with the app. For an "AR Optional" app, specify "optional" instead of
-             "required".
-        -->
+<!--       <activity android:name="net.rdrei.android.dirchooser.DirectoryChooserActivity" />-->
         <meta-data
             android:name="com.google.ar.core"
             android:value="required" />

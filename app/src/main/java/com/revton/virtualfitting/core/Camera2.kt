@@ -154,7 +154,7 @@ class Camera2(private val activity: VFCapture, private val textureView: AutoFitT
         /**
          * Max preview height that is guaranteed by Camera2 API
          */
-        private const val MAX_PREVIEW_HEIGHT = 1920
+        private const val MAX_PREVIEW_HEIGHT = 1080
 
 
         // Flag to check if camera capture sessions is closed.

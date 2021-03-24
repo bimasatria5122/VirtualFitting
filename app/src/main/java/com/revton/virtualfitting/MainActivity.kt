@@ -10,8 +10,9 @@ import androidx.core.content.ContextCompat
 
 class MainActivity : AppCompatActivity()
 {
-    var progressAngka = 0
-    var handler: Handler? = null
+    private var progressAngka = 0
+    private var handler: Handler? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity()
         handler = Handler(Handler.Callback {
             progressAngka++
             if(progressAngka == 100) {
+
 
                 finish() // Stop activity
                 if (

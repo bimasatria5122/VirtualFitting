@@ -69,8 +69,10 @@
                 android:text="Storage Location"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/save_chv"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"/>
 
 
             <TextView
@@ -82,16 +84,28 @@
                 android:text="Your Storage Path ..."
                 android:textColor="@color/gray"
                 android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/save_chv"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/storage_location"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@+id/storage_location" />
+
+            <ImageView
+                android:id="@+id/save_chv"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="56dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/chv" />
+
 
             <!-- End Storage Location -->
 
 
 
-            <!-- Capture Sound -->
 
+            <!-- Capture Sound -->
             <TextView
                 android:id="@+id/capture_sound"
                 android:layout_width="wrap_content"
@@ -122,11 +136,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="28dp"
-                android:layout_marginTop="148dp"
+                android:layout_marginTop="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.263"
                 app:layout_constraintStart_toEndOf="@+id/capture_sound"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/save_chv" />
 
             <!-- End Capture Sound -->
 

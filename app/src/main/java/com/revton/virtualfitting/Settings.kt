@@ -10,13 +10,14 @@ class Settings : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
 
-        storage_path.text = Config().save_location.toString()
+        save_chv.setOnClickListener {
+            Config().setDirectoryPath(this)
+        }
+
+        storage_path.text = Config().getDirectoryPath().toString() //Set Text Directory Path
         back.setOnClickListener{
             finish()
         }
     }
 
-    fun main() {
-
-    }
 }
