@@ -14,9 +14,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.revton.virtualfitting.core.Animation
+import com.revton.virtualfitting.core.Config
 import com.revton.virtualfitting.core.Converters
 import com.revton.virtualfitting.model.ClothesModel
 import io.reactivex.disposables.Disposable
+import java.io.File
 import java.util.ArrayList
 
 
@@ -68,6 +70,7 @@ class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
         &&
         ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PERMISSION_GRANTED /*Check Permission Storage Access*/ )
     {
+        if(!File(Config().getConfigPath()).exists()) Config().createConfigFile()
         initCamera2Api() //Menjalankan method initCamera2Api
     }
     else //Pindah Activity bila semua permission ditolak
