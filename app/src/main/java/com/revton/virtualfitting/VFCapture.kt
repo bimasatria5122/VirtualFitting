@@ -43,7 +43,6 @@ class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
 
         canvasEditor = findViewById(R.id.canvasEditor) // Create canvas view
 
-
         settings.setOnClickListener{
             Animation().buttonClicked(findViewById(R.id.settings))
             startActivity(Intent(this, Settings::class.java)) //Show Activity Settings
@@ -116,17 +115,15 @@ class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
 
         camera2 = Camera2(this, camera_view) // Initialize camera view
         capture.setOnClickListener { v ->
+            if(Config().getConfigSound()) captureSound()
+            Animation().buttonClicked(findViewById(R.id.capture))
             camera2.takePhoto {
                 Toast.makeText(v.context, "Saving Picture", Toast.LENGTH_SHORT).show() // Show popup toast message when saving process
                 disposable = Converters.convertBitmapToFile(getClothes(),it) { file ->
                     Toast.makeText(v.context, "Saved Picture Path ${file.path}", Toast.LENGTH_SHORT).show() // Show popup toast message when picture saved
                 }
             }
-            Animation().buttonClicked(findViewById(R.id.capture))
-            if(Config().getConfigSound() == true)
-            {
-                captureSound()
-            }
+
         }
     }
     //End Method Camera2API//
@@ -142,13 +139,13 @@ class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
             val mediaPlayer = MediaPlayer.create(this, R.raw.shutter_sound) // Get Sound from res/raw
 
             //Check Music Volume//
-            if (volume < 3)
+            if (volume < 5)
             {
-                Toast.makeText(this, "Please Turn Up Your Music Volume", Toast.LENGTH_SHORT).show() // Show popup toast message when saving process
+                Toast.makeText(this, "Please Turn Up Your Music Volume", Toast.LENGTH_SHORT).show() // Show popup toast message when volume value less than 5
             }
             else
             {
-                mediaPlayer.start()
+                mediaPlayer.start() // Play sound
             }
 
     }

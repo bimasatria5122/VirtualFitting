@@ -15,7 +15,11 @@ class Config {
 
     //Property//
     private val directoryPath:String? = null
-    private val captureSound:Boolean? = null
+    private val captureSound:Boolean = true
+    private var configList:String = ""
+
+
+
 
     private val default_path = File(
         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
@@ -32,6 +36,7 @@ class Config {
         Environment.getExternalStorageDirectory(),
         "Android/data/com.revton.virtualfitting/VFConfig.json"
     )
+
 
     private val gson = Gson() // Initialize GSON Class (JSON Parser)
     //End Property//
@@ -72,17 +77,16 @@ class Config {
     //Method Set Switch Sound @param Boolean//
     public fun setSwitchSound(switchStatus:Boolean)
     {
-        var configList:String
 
         if(switchStatus)
         {
-            configList = """{"directoryPath" : """"+getDirectoryPath()+"""","captureSound"  : false}"""
-            config_file.writeText(configList) // Write string config List ke file VFConfig.json
+            configList = "{'directoryPath' : \"${getDirectoryPath()}\",'captureSound'  : false}"
+            config_file.writeText(configList) // Write string config List to file VFConfig.json
         }
         else
         {
-            configList = """{"directoryPath" : """"+getDirectoryPath()+"""","captureSound"  : true}"""
-            config_file.writeText(configList) // Write string config List ke file VFConfig.json
+            configList = "{'directoryPath' : \"${getDirectoryPath()}\",'captureSound'  : true}"
+            config_file.writeText(configList) // Write string config List to file VFConfig.json
         }
 
     }
@@ -112,7 +116,7 @@ class Config {
     /* Method ambil status capture sound dari JSON File (Return value boolean)
     * jika bernilai true berarti sound aktif, jika bernilai false berarti sound tidak aktif
     * */
-    public fun getConfigSound(): Boolean?
+    public fun getConfigSound(): Boolean
     {
         val configObj = gson.fromJson(config_file.bufferedReader(),Config::class.java)
         return configObj.captureSound
@@ -145,7 +149,7 @@ class Config {
     {
         config_path.mkdirs() // Buat direktori sesuai config path
         config_file.createNewFile() // Buat file VFConfig JSON di direktori sesuai paath config
-        val configList = """{"directoryPath" : """"+default_path+"""","captureSound"  : true}"""
+        configList = "{'directoryPath' : \"${default_path}\",'captureSound'  : true}"
         config_file.writeText(configList) // Write string config List ke file VFConfig.json
     }
     //End Method Buat JSON Config File//

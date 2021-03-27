@@ -12,7 +12,7 @@ class Animation {
             interpolator = LinearInterpolator()
             duration = 500
             alpha(1f)
-            startDelay = 300
+            startDelay = 200
             start()
         }
     }
