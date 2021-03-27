@@ -12,6 +12,7 @@ class Settings : AppCompatActivity() {
 
         save_chv.setOnClickListener {
             Config().setDirectoryPath(this)
+            storage_path.text = Config().getDirectoryPath().toString() //Set Text Directory Path
         }
 
         storage_path.text = Config().getDirectoryPath().toString() //Set Text Directory Path

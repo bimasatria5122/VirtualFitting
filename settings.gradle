@@ -1,2 +1,3 @@
+include ':canvaseditors'
 include ':app'
 rootProject.name = "Virtual Fitting"

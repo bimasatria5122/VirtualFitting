@@ -1,26 +1,31 @@
 package com.revton.virtualfitting
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.revton.virtualfitting.core.Camera2
-import kotlinx.android.synthetic.main.activity_v_f_capture.*
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.outsbook.libs.canvaseditor.CanvasEditorView
 import com.revton.virtualfitting.core.Animation
+import com.revton.virtualfitting.core.Camera2
 import com.revton.virtualfitting.core.Config
 import com.revton.virtualfitting.core.Converters
 import com.revton.virtualfitting.model.ClothesModel
 import io.reactivex.disposables.Disposable
+import kotlinx.android.synthetic.main.activity_v_f_capture.*
+import java.io.ByteArrayOutputStream
 import java.io.File
-import java.util.ArrayList
-
+import java.io.FileOutputStream
+import java.io.IOException
+import java.util.*
 
 
 class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
@@ -30,13 +35,15 @@ class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
     private val clothesList = ArrayList<ClothesModel>()
     private lateinit var clothesAdapter: ClothesAdapter
     private var disposable: Disposable? = null
-
+    private lateinit var canvasEditor:CanvasEditorView
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_v_f_capture)
         init() //Call Method Init
+        canvasEditor = findViewById(R.id.canvasEditor)
+
 
         settings.setOnClickListener{
             Animation().button_clicked(findViewById(R.id.settings))
@@ -60,9 +67,86 @@ class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
     override fun onCellClickListener(cloth: ClothesModel) {
         val clothImg: ImageView = findViewById(R.id.cloth)
 //        Toast.makeText(this,"Cell Clicked",Toast.LENGTH_SHORT).show()
-        clothImg.setImageResource(resources.getIdentifier("@drawable/"+cloth.getId(),null,packageName))
+//        clothImg.setImageResource(resources.getIdentifier("@drawable/"+cloth.getId(),null,packageName))
+//
+//        var bitss = getDrawable(resources.getIdentifier("@drawable/"+cloth.getId(),null,packageName))
+////        bitss.buildDrawingCache()
+        canvasEditor.removeAll()
+        val klambi = getDrawable(resources.getIdentifier("@drawable/"+cloth.getId(),null,packageName))
+            klambi.let{
+                if (klambi != null) {
+                    canvasEditor.addDrawableSticker(klambi)
+                }
+            }
     }
 
+
+
+    //Method Save Image//
+    public fun compressBitmap(bitmap: Bitmap): File?
+    {
+        //create a file to write bitmap data
+
+        try
+        {
+
+            val path = File(Config().getDirectoryPath())
+            if (!path.exists())
+                path.mkdirs()
+            val picture = File(path, "VF-" + System.currentTimeMillis() + ".jpeg")
+//
+//            var bitss:ImageView = findViewById(R.id.cloth)
+//            bitss.buildDrawingCache()
+//            var cimg = bitss.getDrawingCache()
+//
+//
+//
+//
+//            var cs: Bitmap? = null
+//
+//
+//
+//            cs = Bitmap.createBitmap(bitmap.width, bitmap.height, bitmap.config)
+//
+////            val icon = BitmapFactory.decodeFile(VFCapture().resources.getIdentifier("@drawable/c2",null,VFCapture().packageName).toString())
+//            val comboImage = Canvas(cs)
+//            comboImage.drawBitmap(cimg, Matrix(), null)
+//            comboImage.drawBitmap(bitmap, 0f, 0f, null)
+//            bitmap.recycle()
+//            cimg.recycle()
+
+            //Convert bitmap to byte array
+            val bos = ByteArrayOutputStream()
+
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100 /*ignored for PNG*/, bos)
+            val bitmapData = bos.toByteArray()
+
+            //write the bytes in file
+            val fos = FileOutputStream(picture)
+            fos.write(bitmapData)
+            fos.flush()
+            fos.close()
+            return picture
+        }
+        catch (e: IOException)
+        {
+            e.printStackTrace()
+        }
+
+        return null
+    }
+    //End Method Save Image//
+
+
+    @SuppressLint("WrongViewCast")
+    public fun getId(): ImageView {
+        return findViewById(R.id.cloth)
+    }
+
+
+    private fun getClothes(): Bitmap {
+        return canvasEditor.downloadBitmap()
+    }
 
     //Create Camera View//
     private fun init() = if (
@@ -87,7 +171,7 @@ class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
         capture.setOnClickListener { v ->
             camera2.takePhoto {
                 Toast.makeText(v.context, "Saving Picture", Toast.LENGTH_SHORT).show()
-                disposable = Converters.convertBitmapToFile(it) { file ->
+                disposable = Converters.convertBitmapToFile(getClothes(),it) { file ->
                     Toast.makeText(v.context, "Saved Picture Path ${file.path}", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -98,6 +182,7 @@ class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
 
 
     //End Create Camera View//
+
 
 
 
