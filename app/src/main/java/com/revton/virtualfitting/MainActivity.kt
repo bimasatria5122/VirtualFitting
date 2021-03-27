@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity()
                 }
 
             }
-            handler?.sendEmptyMessageDelayed(0, 20) //Delay callback function
+            handler?.sendEmptyMessageDelayed(0, 10) //Delay callback function
             true
         })
 

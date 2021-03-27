@@ -1,9 +1,12 @@
 package com.revton.virtualfitting
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.Bitmap
+import android.media.AudioManager
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -63,6 +66,7 @@ class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
 
 
 
+
     //Method Show Cloth image to canvas editor//
     override fun onCellClickListener(cloth: ClothesModel) {
 //        Toast.makeText(this,"Cell Clicked",Toast.LENGTH_SHORT).show()
@@ -119,11 +123,36 @@ class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
                 }
             }
             Animation().buttonClicked(findViewById(R.id.capture))
+            if(Config().getConfigSound() == true)
+            {
+                captureSound()
+            }
         }
     }
     //End Method Camera2API//
 
 
+
+
+    //Method Capture Sound//
+    private fun captureSound()
+    {
+            val sound: AudioManager = this.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+            val volume: Int = sound.getStreamVolume(AudioManager.STREAM_MUSIC) // Get Music Volume
+            val mediaPlayer = MediaPlayer.create(this, R.raw.shutter_sound) // Get Sound from res/raw
+
+            //Check Music Volume//
+            if (volume < 3)
+            {
+                Toast.makeText(this, "Please Turn Up Your Music Volume", Toast.LENGTH_SHORT).show() // Show popup toast message when saving process
+            }
+            else
+            {
+                mediaPlayer.start()
+            }
+
+    }
+    //End Method Capture Sound//
 
 
 
