@@ -1,12 +1,10 @@
 package com.revton.virtualfitting
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -21,33 +19,31 @@ import com.revton.virtualfitting.core.Converters
 import com.revton.virtualfitting.model.ClothesModel
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_v_f_capture.*
-import java.io.ByteArrayOutputStream
 import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
 import java.util.*
 
 
 class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
 {
 
-    private lateinit var camera2: Camera2
-    private val clothesList = ArrayList<ClothesModel>()
+    private lateinit var camera2: Camera2 // Initialize Camera 2 Api
     private lateinit var clothesAdapter: ClothesAdapter
+    private lateinit var canvasEditor:CanvasEditorView // Initialize Canvas Editor
+    private val clothesList             = ArrayList<ClothesModel>()
     private var disposable: Disposable? = null
-    private lateinit var canvasEditor:CanvasEditorView
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_v_f_capture)
         init() //Call Method Init
-        canvasEditor = findViewById(R.id.canvasEditor)
+
+        canvasEditor = findViewById(R.id.canvasEditor) // Create canvas view
 
 
         settings.setOnClickListener{
-            Animation().button_clicked(findViewById(R.id.settings))
-            startActivity(Intent(this, Settings::class.java)) //Munculkan Activity Settings
+            Animation().buttonClicked(findViewById(R.id.settings))
+            startActivity(Intent(this, Settings::class.java)) //Show Activity Settings
         }
 
 
@@ -61,16 +57,15 @@ class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
         clothes.adapter             = clothesAdapter
         prepareClothesData()
         ///End Recycler View Code///
+
+
     }
 
 
+
+    //Method Show Cloth image to canvas editor//
     override fun onCellClickListener(cloth: ClothesModel) {
-        val clothImg: ImageView = findViewById(R.id.cloth)
 //        Toast.makeText(this,"Cell Clicked",Toast.LENGTH_SHORT).show()
-//        clothImg.setImageResource(resources.getIdentifier("@drawable/"+cloth.getId(),null,packageName))
-//
-//        var bitss = getDrawable(resources.getIdentifier("@drawable/"+cloth.getId(),null,packageName))
-////        bitss.buildDrawingCache()
         canvasEditor.removeAll()
         val klambi = getDrawable(resources.getIdentifier("@drawable/"+cloth.getId(),null,packageName))
             klambi.let{
@@ -79,116 +74,62 @@ class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
                 }
             }
     }
+    //End Method Show Cloth image to canvas editor//
 
 
 
-    //Method Save Image//
-    public fun compressBitmap(bitmap: Bitmap): File?
-    {
-        //create a file to write bitmap data
 
-        try
-        {
-
-            val path = File(Config().getDirectoryPath())
-            if (!path.exists())
-                path.mkdirs()
-            val picture = File(path, "VF-" + System.currentTimeMillis() + ".jpeg")
-//
-//            var bitss:ImageView = findViewById(R.id.cloth)
-//            bitss.buildDrawingCache()
-//            var cimg = bitss.getDrawingCache()
-//
-//
-//
-//
-//            var cs: Bitmap? = null
-//
-//
-//
-//            cs = Bitmap.createBitmap(bitmap.width, bitmap.height, bitmap.config)
-//
-////            val icon = BitmapFactory.decodeFile(VFCapture().resources.getIdentifier("@drawable/c2",null,VFCapture().packageName).toString())
-//            val comboImage = Canvas(cs)
-//            comboImage.drawBitmap(cimg, Matrix(), null)
-//            comboImage.drawBitmap(bitmap, 0f, 0f, null)
-//            bitmap.recycle()
-//            cimg.recycle()
-
-            //Convert bitmap to byte array
-            val bos = ByteArrayOutputStream()
-
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100 /*ignored for PNG*/, bos)
-            val bitmapData = bos.toByteArray()
-
-            //write the bytes in file
-            val fos = FileOutputStream(picture)
-            fos.write(bitmapData)
-            fos.flush()
-            fos.close()
-            return picture
-        }
-        catch (e: IOException)
-        {
-            e.printStackTrace()
-        }
-
-        return null
-    }
-    //End Method Save Image//
-
-
-    @SuppressLint("WrongViewCast")
-    public fun getId(): ImageView {
-        return findViewById(R.id.cloth)
-    }
-
-
+    //Method Convert Cloth Canvas to Bitmap//
     private fun getClothes(): Bitmap {
         return canvasEditor.downloadBitmap()
     }
+    //End Method Convert//
 
-    //Create Camera View//
+
+
+
+    //Method Check storage & camera permissions//
     private fun init() = if (
         ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PERMISSION_GRANTED //Check Permission Camera Access
         &&
         ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PERMISSION_GRANTED /*Check Permission Storage Access*/ )
     {
-        if(!File(Config().getConfigPath()).exists()) Config().createConfigFile()
+        if(!File(Config().getConfigFile()).exists()) Config().createConfigFile() // Create JSON Config file in config_path (Check in Config Class)
         initCamera2Api() //Menjalankan method initCamera2Api
     }
-    else //Pindah Activity bila semua permission ditolak
+    else //Move to AllowStorage Activity, if storage & camera permissions not granted
     {
         finish()
-        startActivity(Intent(this, AllowStorage::class.java)) //Pindah Activity AllowStorage
+        startActivity(Intent(this, AllowStorage::class.java)) //Move to Activity AllowStorage
     }
+    //End Method check storage & camera permissions//
 
 
-    //Method Camera2API
+
+
+    //Method Camera2API//
     private fun initCamera2Api() {
 
-        camera2 = Camera2(this, camera_view)
+        camera2 = Camera2(this, camera_view) // Initialize camera view
         capture.setOnClickListener { v ->
             camera2.takePhoto {
-                Toast.makeText(v.context, "Saving Picture", Toast.LENGTH_SHORT).show()
+                Toast.makeText(v.context, "Saving Picture", Toast.LENGTH_SHORT).show() // Show popup toast message when saving process
                 disposable = Converters.convertBitmapToFile(getClothes(),it) { file ->
-                    Toast.makeText(v.context, "Saved Picture Path ${file.path}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(v.context, "Saved Picture Path ${file.path}", Toast.LENGTH_SHORT).show() // Show popup toast message when picture saved
                 }
             }
-            Animation().button_clicked(findViewById(R.id.capture))
+            Animation().buttonClicked(findViewById(R.id.capture))
         }
     }
     //End Method Camera2API//
 
 
-    //End Create Camera View//
 
 
 
 
     //Camera2API Thread//
     override fun onPause() {
-
         camera2.close()
         super.onPause()
     }
@@ -204,6 +145,8 @@ class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
         super.onDestroy()
     }
     //End Camera2API Thread//
+
+
 
 
 
@@ -225,6 +168,8 @@ class VFCapture : AppCompatActivity(), ClothesAdapter.CellClickListener
     }
 
     ///End Clothes Data///
+
+
 
 
 }

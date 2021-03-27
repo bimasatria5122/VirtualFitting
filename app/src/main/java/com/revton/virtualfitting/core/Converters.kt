@@ -45,27 +45,31 @@ object Converters {
         try
         {
 
-            val path = File(Config().getDirectoryPath())
+            val path = File(Config().getDirectoryPath()) // Get directory save path
             if (!path.exists())
                 path.mkdirs()
             val picture = File(path, "VF-" + System.currentTimeMillis() + ".jpeg")
 
-
+            //Combine Photo and Cloth Picture//
             val comboImage = Canvas(bitmap)
             comboImage.drawBitmap(cloth, 0f, 0f, null)
+            //End Combine Photo and Cloth Picture//
+
 
             //Convert bitmap to byte array
             val bos = ByteArrayOutputStream()
 
-            //Combine Photo and Cloth Picture
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100 /*ignored for PNG*/, bos)
+
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100 /*ignored for PNG*/, bos) // Compress Combined Images to image format
             val bitmapData = bos.toByteArray()
 
-            //write the bytes in file
+            //Write the bytes in file//
             val fos = FileOutputStream(picture)
             fos.write(bitmapData)
             fos.flush()
             fos.close()
+            //End Write the bytes in file//
+
             return picture
         }
         catch (e: IOException)

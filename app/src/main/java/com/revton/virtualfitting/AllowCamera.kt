@@ -17,7 +17,7 @@ class AllowCamera : AppCompatActivity()
         setContentView(R.layout.activity_allow_camera)
 
         button_camera.setOnClickListener{
-            Animation().button_clicked(findViewById(R.id.button_camera))
+            Animation().buttonClicked(findViewById(R.id.button_camera))
             allowAccessCamera()
         }
 

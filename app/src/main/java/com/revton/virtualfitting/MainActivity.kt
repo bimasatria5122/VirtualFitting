@@ -31,26 +31,26 @@ class MainActivity : AppCompatActivity()
                     &&
                     ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED )
                 {
-                    startActivity(Intent(this, VFCapture::class.java)) //Pindah Activity
+                    startActivity(Intent(this, VFCapture::class.java)) //Pindah Activity Allow Storage
                 }
 
                 else if (ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED )
                 {
-                    startActivity(Intent(this, AllowCamera::class.java)) //Pindah Activity
+                    startActivity(Intent(this, AllowCamera::class.java)) //Pindah Activity Allow Storage
                 }
 
                 else if(ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED )
                 {
-                    startActivity(Intent(this, AllowStorage::class.java)) //Pindah Activity
+                    startActivity(Intent(this, AllowStorage::class.java)) //Pindah Activity Allow Storage
                 }
 
                 else
                 {
-                    startActivity(Intent(this, AllowStorage::class.java)) //Pindah Activity
+                    startActivity(Intent(this, AllowStorage::class.java)) //Pindah Activity Allow Storage
                 }
 
             }
-            handler?.sendEmptyMessageDelayed(0, 10) //Delay callback function
+            handler?.sendEmptyMessageDelayed(0, 20) //Delay callback function
             true
         })
 

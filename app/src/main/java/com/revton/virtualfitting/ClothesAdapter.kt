@@ -18,7 +18,6 @@ internal class ClothesAdapter(private var clothesList: List<ClothesModel>,
 
     internal inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view)
     {
-//        var id: TextView      = view.findViewById(R.id.id)
         var fileName: ImageView = view.findViewById(R.id.file_name)
     }
 
@@ -46,13 +45,7 @@ internal class ClothesAdapter(private var clothesList: List<ClothesModel>,
     {
 
         val cloth  = clothesList[position]
-//        holder.id.text        = cloth.getId()
-
         holder.fileName.setImageResource(context.resources.getIdentifier("@drawable/"+cloth.getId(),null,context.packageName))
-//        var imgres:Int        = context.resources.getIdentifier("@drawable/"+cloth.getId(),null,context.packageName)
-//        var draw:Drawable     = context.resources.getDrawable(imgres)
-//
-//        holder.fileName.setImageDrawable(draw)
 
         holder.fileName.setOnClickListener{
             cellClickListener.onCellClickListener(cloth)

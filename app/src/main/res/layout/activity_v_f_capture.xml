@@ -6,33 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".VFCapture">
 
+
+
+    <!-- Camera View -->
     <com.revton.virtualfitting.core.AutoFitTextureView
         android:id="@+id/camera_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:keepScreenOn="true" />
+    <!-- End Camera View -->
 
 
+
+    <!-- Canvas & Buttons -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Canvas View -->
         <com.outsbook.libs.canvaseditor.CanvasEditorView
             android:id = "@+id/canvasEditor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/transparent"
-            android:backgroundTint="@color/transparent"
-            />
+            android:backgroundTint="@color/transparent" />
+        <!-- End Canvas View -->
 
-        <ImageView
-            android:id="@+id/cloth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="38dp"/>
 
+        <!-- Buttons View -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -60,11 +61,16 @@
                 app:srcCompat="@drawable/settings_sm" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- End Buttons View -->
 
 
 
     </FrameLayout>
+    <!-- End Canvas & Buttons -->
 
+
+
+    <!-- Clothes List -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -78,5 +84,8 @@
             android:layout_height="match_parent" />
 
     </LinearLayout>
+    <!-- End Clothes List -->
+
+
 
 </RelativeLayout>

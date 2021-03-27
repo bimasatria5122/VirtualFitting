@@ -18,7 +18,7 @@ class AllowStorage : AppCompatActivity()
         setContentView(R.layout.activity_allow_storage)
 
         button_storage.setOnClickListener{
-            Animation().button_clicked(findViewById(R.id.button_storage))
+            Animation().buttonClicked(findViewById(R.id.button_storage))
             allowAccessStorage()
         }
 

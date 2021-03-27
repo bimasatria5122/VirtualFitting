@@ -8,12 +8,13 @@
     android:orientation="vertical"
     tools:context=".Settings" >
 
+
+    <!-- Header -->
     <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
-
-
+        <!-- Back Button -->
         <ImageView
             android:id="@+id/back"
             android:layout_width="wrap_content"
@@ -23,6 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/back_sm" />
+        <!-- End Back Button -->
 
         <TextView
             android:id="@+id/setting_title"
@@ -41,111 +43,124 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- End Header -->
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+
+
+    <!-- Content -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
-            <!-- Storage Location -->
+        <!-- Storage Location -->
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="64dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/folder_lg" />
+        <!-- Directory Icon -->
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="64dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/folder_lg" />
+        <!-- End Directory Icon -->
 
-            <TextView
-                android:id="@+id/storage_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="64dp"
-                android:fontFamily="@font/monserrat_bold"
-                android:text="Storage Location"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/save_chv"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"/>
-
-
-            <TextView
-                android:id="@+id/storage_path"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:fontFamily="@font/monserrat_reguler"
-                android:text="Your Storage Path ..."
-                android:textColor="@color/gray"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toStartOf="@+id/save_chv"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/storage_location" />
-
-            <ImageView
-                android:id="@+id/save_chv"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="64dp"
-                android:layout_marginEnd="56dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/chv" />
+        <TextView
+            android:id="@+id/storage_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="64dp"
+            android:fontFamily="@font/monserrat_bold"
+            android:text="Directory Location"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/save_chv"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"/>
 
 
-            <!-- End Storage Location -->
+        <TextView
+            android:id="@+id/storage_path"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:fontFamily="@font/monserrat_reguler"
+            android:text="Your Directory Path ..."
+            android:textColor="@color/gray"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/save_chv"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/storage_location" />
+
+        <!-- Chevron Icon -->
+        <ImageView
+            android:id="@+id/save_chv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/chv" />
+        <!-- End Chevron Icon -->
+
+        <!-- End Storage Location -->
 
 
 
 
-            <!-- Capture Sound -->
-            <TextView
-                android:id="@+id/capture_sound"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:fontFamily="@font/monserrat_bold"
-                android:text="Capture Sound"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/storage_path"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintVertical_bias="0.85" />
+        <!-- Capture Sound -->
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="55dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                app:layout_constraintVertical_bias="0.9"
-                app:srcCompat="@drawable/sound_lg" />
+        <!-- Sound Icon -->
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="55dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:layout_constraintVertical_bias="0.9"
+            app:srcCompat="@drawable/sound_lg" />
+        <!-- End Sound Icon -->
 
-            <Switch
-                android:id="@+id/capture_sound_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="50dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.263"
-                app:layout_constraintStart_toEndOf="@+id/capture_sound"
-                app:layout_constraintTop_toBottomOf="@+id/save_chv" />
 
-            <!-- End Capture Sound -->
+        <TextView
+            android:id="@+id/capture_sound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:fontFamily="@font/monserrat_bold"
+            android:text="Capture Sound"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/storage_path"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.85" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <Switch
+            android:id="@+id/capture_sound_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.263"
+            app:layout_constraintStart_toEndOf="@+id/capture_sound"
+            app:layout_constraintTop_toBottomOf="@+id/save_chv" />
 
+        <!-- End Capture Sound -->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- End Content -->
 
 
 
