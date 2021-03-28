@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".DeveloperProfile" >
+
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp" >
+
+        <!-- Back Button -->
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            app:srcCompat="@drawable/back_sm" />
+        <!-- End Back Button -->
+
+        <TextView
+            android:id="@+id/dev_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:paddingStart="-15dp"
+            android:fontFamily="@font/monserrat_bold"
+            android:text="Developer Profile"
+            android:textColor="@color/dark"
+            android:textSize="26sp"
+            android:gravity="center_horizontal"/>
+
+
+    </LinearLayout>
+
+    <!-- End Header -->
+
+
+
+
+    <!-- Content -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="50dp" >
+
+
+
+        <!-- Photo Profile -->
+        <ImageView
+            android:id="@+id/photo_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/photo_profile" />
+        <!-- End Photo Profile -->
+
+        <TextView
+            android:id="@+id/nama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/monserrat_bold"
+            android:layout_marginTop="20dp"
+            android:text="Bima Satria"
+            android:textColor="@color/dark"
+            android:textSize="22sp"/>
+
+        <TextView
+            android:id="@+id/kelas_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/monserrat_reguler"
+            android:text="XII RPL A / 07"
+            android:textColor="@color/dark"
+            android:textSize="12sp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="11dp" >
+
+            <!-- Github -->
+            <ImageView
+                android:id="@+id/github"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginEnd="10dp"
+                app:srcCompat="@drawable/github" />
+            <!-- Github -->
+
+            <!-- Gmail -->
+            <ImageView
+                android:id="@+id/gmail"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                app:srcCompat="@drawable/google" />
+            <!-- Gmail -->
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- End Content -->
+
+
+
+</LinearLayout>

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/FullScreen">
-        <activity android:name=".AllowCamera"></activity>
+        <activity android:name=".DeveloperProfile"></activity>
+        <activity android:name=".AllowCamera" />
         <activity android:name=".VFCapture" />
         <activity android:name=".AllowStorage" />
         <activity android:name=".Settings" />

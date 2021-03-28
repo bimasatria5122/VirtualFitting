@@ -1,5 +1,7 @@
 package com.revton.virtualfitting
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.revton.virtualfitting.core.Animation
@@ -36,10 +38,21 @@ class Settings : AppCompatActivity() {
         }
         //End Switch Listener//
 
+
         storage_path.text = Config().getDirectoryPath().toString() //Set Text Directory Path
         back.setOnClickListener{
             Animation().buttonClicked(back) //Add Animation when button clicked
             finish()
+        }
+
+        card_view_dev.setOnClickListener{
+            Animation().buttonClickedScale(card_view_dev) //Add Animation when button clicked
+            startActivity(Intent(this, DeveloperProfile::class.java)) //Show Activity DeveloperProfile
+        }
+
+        card_view_repo.setOnClickListener{
+            Animation().buttonClickedScale(card_view_repo) //Add Animation when button clicked
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://www.github.com/bimasatria7")))
         }
     }
 

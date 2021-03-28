@@ -11,15 +11,15 @@
 
     <!-- Header -->
     <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
         <!-- Back Button -->
         <ImageView
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -48,118 +48,300 @@
 
 
     <!-- Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
 
-        <!-- Storage Location -->
-
-        <!-- Directory Icon -->
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="64dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/folder_lg" />
-        <!-- End Directory Icon -->
-
-        <TextView
-            android:id="@+id/storage_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="64dp"
-            android:fontFamily="@font/monserrat_bold"
-            android:text="Directory Location"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/save_chv"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"/>
+            <!-- CardView Folder & Capture Sound -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/folder_capture"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="30dp"
+                app:cardCornerRadius="20dp"
+                android:gravity="center_vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_view_dev">
 
 
-        <TextView
-            android:id="@+id/storage_path"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:fontFamily="@font/monserrat_reguler"
-            android:text="Your Directory Path ..."
-            android:textColor="@color/gray"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toStartOf="@+id/save_chv"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toBottomOf="@+id/storage_location" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-        <!-- Chevron Icon -->
-        <ImageView
-            android:id="@+id/save_chv"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="56dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/chv" />
-        <!-- End Chevron Icon -->
+                    <!-- Storage Location -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp" >
 
-        <!-- End Storage Location -->
+                        <!-- Profile Icon -->
+                        <ImageView
+                            android:id="@+id/folder_icon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="15dp"
+                            app:srcCompat="@drawable/folder_lg" />
+                        <!-- End Profile Icon -->
+
+                        <TextView
+                            android:id="@+id/storage_location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="80dp"
+                            android:layout_marginEnd="70dp"
+                            android:layout_marginTop="15dp"
+                            android:fontFamily="@font/monserrat_bold"
+                            android:text="Directory Location"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/storage_path"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="36dp"
+                            android:layout_marginStart="80dp"
+                            android:layout_marginEnd="70dp"
+                            android:fontFamily="@font/monserrat_reguler"
+                            android:text="Your Directory Path ..."
+                            android:textColor="@color/gray"
+                            android:textSize="12sp"/>
+
+                        <!-- Chevron Icon -->
+                        <ImageView
+                            android:id="@+id/save_chv"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="19dp"
+                            android:layout_marginStart="250dp"
+                            app:srcCompat="@drawable/chv" />
+                        <!-- End Chevron Icon -->
+
+                    </RelativeLayout>
+                    <!-- End Storage Location -->
+
+
+
+                    <!-- Capture Sound -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp" >
+
+                        <!-- Sound Icon -->
+                        <ImageView
+                            android:id="@+id/sound_icon"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            app:srcCompat="@drawable/sound_lg" />
+                        <!-- End Sound Icon -->
+
+                        <TextView
+                            android:id="@+id/capture_sound"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="80dp"
+                            android:layout_marginTop="25dp"
+                            android:fontFamily="@font/monserrat_bold"
+                            android:text="Capture Sound"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="16sp" />
+
+                        <Switch
+                            android:id="@+id/capture_sound_switch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="225dp"
+                            android:layout_marginTop="25dp" />
+
+
+                    </RelativeLayout>
+                    <!-- End Capture Sound -->
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <!--End CardView Develeoper Profile -->
 
 
 
 
-        <!-- Capture Sound -->
+            <!-- CardView Developer Profile -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_dev"
+                android:layout_width="310dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                app:cardCornerRadius="20dp"
+                android:gravity="center_vertical"
+                app:layout_constraintBottom_toTopOf="@+id/card_view_repo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/folder_capture">
 
-        <!-- Sound Icon -->
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="55dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2"
-            app:layout_constraintVertical_bias="0.9"
-            app:srcCompat="@drawable/sound_lg" />
-        <!-- End Sound Icon -->
+                <!-- Profile Icon -->
+                <ImageView
+                    android:id="@+id/profile_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    app:srcCompat="@drawable/profile_lg" />
+                <!-- End Profile Icon -->
+
+                <TextView
+                    android:id="@+id/developer_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginEnd="70dp"
+                    android:layout_marginTop="22dp"
+                    android:fontFamily="@font/monserrat_bold"
+                    android:text="Developer Profile"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16sp" />
 
 
-        <TextView
-            android:id="@+id/capture_sound"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:fontFamily="@font/monserrat_bold"
-            android:text="Capture Sound"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/storage_path"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.85" />
+                <!-- Chevron Icon -->
+                <ImageView
+                    android:id="@+id/profile_chv"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_marginStart="250dp"
+                    app:srcCompat="@drawable/chv" />
+                <!-- End Chevron Icon -->
 
-        <Switch
-            android:id="@+id/capture_sound_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.263"
-            app:layout_constraintStart_toEndOf="@+id/capture_sound"
-            app:layout_constraintTop_toBottomOf="@+id/save_chv" />
 
-        <!-- End Capture Sound -->
+            </androidx.cardview.widget.CardView>
+            <!--End CardView Develeoper Profile -->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+            <!-- CardView Github Repository -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_repo"
+                android:layout_width="310dp"
+                android:layout_height="70dp"
+                android:padding="10dp"
+                android:layout_marginBottom="30dp"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintBottom_toTopOf="@id/card_view_about"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <!-- Profile Icon -->
+                <ImageView
+                    android:id="@+id/github_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    app:srcCompat="@drawable/github_lg" />
+                <!-- End Profile Icon -->
+
+
+                <TextView
+                    android:id="@+id/github_repo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginEnd="70dp"
+                    android:layout_marginTop="22dp"
+                    android:fontFamily="@font/monserrat_bold"
+                    android:text="Github Repository"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16sp" />
+
+
+                <!-- Chevron Icon -->
+                <ImageView
+                    android:id="@+id/github_chv"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_marginStart="250dp"
+                    app:srcCompat="@drawable/chv" />
+                <!-- End Chevron Icon -->
+
+
+            </androidx.cardview.widget.CardView>
+            <!--End CardView Github Repository -->
+
+
+
+            <!-- CardView About App -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_about"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginBottom="50dp"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingVertical="20dp">
+
+
+                    <!-- Logo VF -->
+                    <ImageView
+                        android:id="@+id/logo_vf"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        app:srcCompat="@drawable/logo_lg" />
+                    <!-- End Logo VF -->
+
+                    <TextView
+                        android:id="@+id/app_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/monserrat_bold"
+                        android:text="@string/app_name"
+                        android:textColor="@color/dark"
+                        android:textSize="16sp"
+                        android:layout_marginTop="10dp" />
+
+                    <TextView
+                        android:id="@+id/app_version"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/monserrat_reguler"
+                        android:text="App Version 1.2"
+                        android:textColor="@color/dark"
+                        android:textSize="12sp"
+                        android:layout_marginTop="1dp" />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+            <!--End CardView About App -->
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
     <!-- End Content -->
 
 
