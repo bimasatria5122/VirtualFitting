@@ -5,8 +5,8 @@ import android.util.AttributeSet
 import android.view.TextureView
 
 class AutoFitTextureView : TextureView {
-    private var mRatioWidth = 0
-    private var mRatioHeight = 0
+    private var mRatioWidth = 0 //default 0
+    private var mRatioHeight = 0 //default 0
 
     constructor(context: Context) : this(context, null)
 

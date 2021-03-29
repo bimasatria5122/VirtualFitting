@@ -395,7 +395,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/monserrat_reguler"
-                        android:text="App Version 1.3"
+                        android:text="App Version 1.4"
                         android:textColor="@color/dark"
                         android:textSize="12sp"
                         android:layout_marginTop="1dp" />

@@ -5,7 +5,7 @@
     <string name="allow_camera_title">Allow Camera Access</string>
     <string name="allow_storage_desc">Allow your storage access to save the fit clothes picture</string>
     <string name="allow_camera_desc">Allow your camera access to capture the model</string>
-    <string name="bug_report_desc">If the app keeps crashing, clear your app data or send an email</string>
+    <string name="bug_report_desc">If you found bug in this app, send an email to me</string>
     <string name="email_send_desc">This email will send it to bimasatria5122@gmail.com</string>
 
 

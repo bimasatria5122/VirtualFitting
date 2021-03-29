@@ -149,12 +149,12 @@ class Camera2(private val activity: VFCapture, private val textureView: AutoFitT
         /**
          * Max preview width that is guaranteed by Camera2 API
          */
-        private const val MAX_PREVIEW_WIDTH = 1920
+        private const val MAX_PREVIEW_WIDTH = 2160//default 1920
 
         /**
          * Max preview height that is guaranteed by Camera2 API
          */
-        private const val MAX_PREVIEW_HEIGHT = 1080
+        private const val MAX_PREVIEW_HEIGHT = 3840//default 1080
 
 
         // Flag to check if camera capture sessions is closed.
@@ -681,7 +681,7 @@ we set flash after the preview request is processed to ensure flash fires only d
 // Tell #cameraCaptureCallback to wait for the precapture sequence to be set.
             cameraState = STATE_WAITING_PRECAPTURE
 
-            setFlashMode(captureRequestBuilder!!, true)
+            setFlashMode(captureRequestBuilder!!, false)//default true
 
             cameraCaptureSession!!.capture(captureRequestBuilder!!.build(), cameraCaptureCallBack, backgroundHandler)
 
@@ -716,7 +716,7 @@ we set flash after the preview request is processed to ensure flash fires only d
             captureBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE)
 
 
-            setFlashMode(captureBuilder, true)
+            setFlashMode(captureBuilder, false)//default true
 
             // Orientation
             val rotation = activity.windowManager.defaultDisplay.rotation

@@ -7,18 +7,25 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/FullScreen">
-        <activity android:name=".ReportBug"/>
-        <activity android:name=".DeveloperProfile" />
-        <activity android:name=".AllowCamera" />
-        <activity android:name=".VFCapture" />
-        <activity android:name=".AllowStorage" />
-        <activity android:name=".Settings" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ReportBug"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".DeveloperProfile"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AllowCamera"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".VFCapture"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AllowStorage"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Settings"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
