@@ -18,6 +18,7 @@
 #built application files
 *.apk
 *.ap_
+app/release
 
 # files for the dex VM
 *.dex
