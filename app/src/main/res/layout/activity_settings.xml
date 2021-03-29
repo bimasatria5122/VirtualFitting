@@ -63,7 +63,7 @@
                 android:layout_width="310dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="20dp"
                 app:cardCornerRadius="20dp"
                 android:gravity="center_vertical"
                 app:layout_constraintTop_toTopOf="parent"
@@ -173,7 +173,7 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-            <!--End CardView Develeoper Profile -->
+            <!--End CardView Folder & Capture Sound -->
 
 
 
@@ -182,9 +182,9 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view_dev"
                 android:layout_width="310dp"
-                android:layout_height="70dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 app:cardCornerRadius="20dp"
                 android:gravity="center_vertical"
                 app:layout_constraintBottom_toTopOf="@+id/card_view_repo"
@@ -199,6 +199,7 @@
                     android:layout_height="40dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginBottom="16dp"
                     app:srcCompat="@drawable/profile_lg" />
                 <!-- End Profile Icon -->
 
@@ -235,23 +236,24 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view_repo"
                 android:layout_width="310dp"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="20dp"
                 app:cardCornerRadius="20dp"
-                app:layout_constraintBottom_toTopOf="@id/card_view_about"
+                app:layout_constraintBottom_toTopOf="@id/card_view_bug"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-                <!-- Profile Icon -->
+                <!-- Github Icon -->
                 <ImageView
                     android:id="@+id/github_icon"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
+                    android:layout_marginBottom="16dp"
                     app:srcCompat="@drawable/github_lg" />
-                <!-- End Profile Icon -->
+                <!-- End Github Icon -->
 
 
                 <TextView
@@ -280,6 +282,73 @@
 
             </androidx.cardview.widget.CardView>
             <!--End CardView Github Repository -->
+
+
+
+            <!-- CardView Bug Report -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_view_bug"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginBottom="20dp"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintBottom_toTopOf="@id/card_view_about"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <!-- Bug Icon -->
+                <ImageView
+                    android:id="@+id/bug_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    app:srcCompat="@drawable/bug_lg" />
+                <!-- End Bug Icon -->
+
+
+                <TextView
+                    android:id="@+id/bug_report"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginEnd="70dp"
+                    android:layout_marginTop="18dp"
+                    android:fontFamily="@font/monserrat_bold"
+                    android:text="Report Bug"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/bug_desc"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="38dp"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginEnd="70dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/monserrat_reguler"
+                    android:text="@string/bug_report_desc"
+                    android:textColor="@color/gray"
+                    android:textSize="12sp"/>
+
+
+
+                <!-- Chevron Icon -->
+                <ImageView
+                    android:id="@+id/bug_chv"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="19dp"
+                    android:layout_marginStart="250dp"
+                    app:srcCompat="@drawable/chv" />
+                <!-- End Chevron Icon -->
+
+
+            </androidx.cardview.widget.CardView>
+            <!--End CardView Bug Report -->
+
 
 
 
@@ -326,7 +395,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/monserrat_reguler"
-                        android:text="App Version 1.2"
+                        android:text="App Version 1.3"
                         android:textColor="@color/dark"
                         android:textSize="12sp"
                         android:layout_marginTop="1dp" />

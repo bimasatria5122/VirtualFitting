@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".ReportBug">
+
+
+    <!-- Header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <!-- Back Button -->
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back_sm" />
+        <!-- End Back Button -->
+
+        <TextView
+            android:id="@+id/report_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/monserrat_bold"
+            android:text="Report Bug"
+            android:textColor="@color/dark"
+            android:textSize="26sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.30"
+            app:layout_constraintStart_toEndOf="@+id/back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- End Header -->
+
+
+    <!-- Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <!-- CardView Send Email -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/folder_capture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="40dp"
+                android:gravity="center_vertical"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_view_dev"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <!-- Email Form -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="50dp"
+                    android:layout_marginVertical="50dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/capture_sound"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp"
+                        android:fontFamily="@font/monserrat_bold"
+                        android:text="Send an email"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="16sp"
+                        android:gravity="center_horizontal"/>
+
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/monserrat_reguler"
+                        android:text="Bug Title" />
+
+                    <EditText
+                        android:id="@+id/bugTitle"
+                        android:layout_width="match_parent"
+                        android:fontFamily="@font/monserrat_reguler"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/monserrat_reguler"
+                        android:text="Bug Description" />
+
+                    <EditText
+                        android:id="@+id/bugDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/monserrat_reguler"
+                        android:lines="4" />
+
+                    <Button
+                        android:id="@+id/buttonSend"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/button_blue_lg"
+                        android:fontFamily="@font/monserrat_bold"
+                        android:layout_marginTop="30dp"
+                        android:text="Send Email"
+                        android:textColor="@color/white"/>
+
+
+                    <TextView
+                        android:id="@+id/bug_desc"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/monserrat_reguler"
+                        android:text="@string/email_send_desc"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp"
+                        android:layout_gravity="center_horizontal"
+                        android:textAlignment="center"/>
+
+
+                </LinearLayout>
+                <!-- End Email Form -->
+
+            </androidx.cardview.widget.CardView>
+            <!--End CardView Send Email -->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+    <!--- End Content -->
+
+
+
+</LinearLayout>

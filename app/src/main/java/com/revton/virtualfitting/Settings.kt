@@ -50,6 +50,11 @@ class Settings : AppCompatActivity() {
             startActivity(Intent(this, DeveloperProfile::class.java)) //Show Activity DeveloperProfile
         }
 
+        card_view_bug.setOnClickListener{
+            Animation().buttonClickedScale(card_view_bug) //Add Animation when button clicked
+            startActivity(Intent(this, ReportBug::class.java)) //Show Activity DeveloperProfile
+        }
+
         card_view_repo.setOnClickListener{
             Animation().buttonClickedScale(card_view_repo) //Add Animation when button clicked
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/bimasatria5122/VirtualFitting")))
