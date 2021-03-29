@@ -21,7 +21,7 @@ class DeveloperProfile : AppCompatActivity() {
 
         github.setOnClickListener{
             Animation().buttonClicked(github) //Add Animation when button clicked
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/bimasatria5122/VirtualFitting")))
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://www.github.com/bimasatria7")))
         }
 
         gmail.setOnClickListener{

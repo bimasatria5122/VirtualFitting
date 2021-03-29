@@ -52,7 +52,7 @@ class Settings : AppCompatActivity() {
 
         card_view_repo.setOnClickListener{
             Animation().buttonClickedScale(card_view_repo) //Add Animation when button clicked
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://www.github.com/bimasatria7")))
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/bimasatria5122/VirtualFitting")))
         }
     }
 
